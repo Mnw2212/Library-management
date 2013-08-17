@@ -1,0 +1,176 @@
+    # book : Name
+    # author
+    # ISBN
+    # book no.
+    # price
+
+import datetime
+
+class detail():
+
+    # book : Name
+    # author
+    # ISBN
+    # book no.
+    # price
+    # quantity
+
+    def book_detail(self):
+
+        print "enter name of the book"
+        self.name=   raw_input()
+        print "name of author"
+        self.author= raw_input()
+        print "ISBN"
+        self.isbn=   raw_input()
+        print "book no."
+        self.book_no=input()
+        print "price of the book"
+        self.price=input()
+        print "enter the quantity"
+        self.quan=input()
+    
+    def stu_detail(self):
+
+        # name
+        #id number
+
+        print "enter your name"
+        self.stu_name=raw_input()
+        print "enter your student id number "
+        self.stu_id=raw_input()
+
+class time():
+
+    issue=datetime.date.today()
+    retur=datetime.date.today()+datetime.timedelta(days=14)
+    reissue=retur+datetime.timedelta(days=14)
+
+    def fine(self):
+        pass
+    
+
+    
+class application():
+
+    # app1====  add books
+    # app2====  delete books
+    # app3====  issue books
+    # app3====  return book
+    #def delete(self,ob[i])
+
+   # def display(self):
+    #    print self.name
+     #   print self.
+
+        
+    def __init__(slef):
+
+        print "currently useless"
+
+#
+#-------------------------------------------------------------------------------------------------------------
+#
+#
+#---------------------- ___MAIN___---------------------------------------------------------------------------- 
+
+
+
+print " enter 1 to add book "
+print " enter 2 to delete book "
+print " enter 3 to issue "
+print " enter 4 to return "
+print " enter 5 to reissue the books"
+print " enter 6 to list all the books "
+print " enter 7 to end transaction"
+
+count_book =0
+count_stu=0
+date=time()
+a=0
+bk=[0]
+app=application()
+
+
+while ( count_book >=0 ):
+
+   a=input()
+
+
+   if( a == 1):
+       bk[count_book]=detail()
+       bk[count_book].book_detail()
+       print "book is added"
+       print "enter the next command"
+       count_book=count_book+1
+       bk.insert(count_book,count_book)
+
+
+   elif( a==2 ):
+        if( count_book== 0 ):
+            print "there are no books in library"
+        else:
+            print "enter ISBN"
+            temp=raw_input()
+            for i in range(count_book):
+                if( temp == bk[i].isbn ):
+                    bk.pop(i)
+       # defining delete is to checked. check check check
+       
+
+   elif( a==3 ):
+        print " which book would you like to issue"
+        issue=raw_input()
+        for i in range(count_book):
+            if( issue == bk[i].name and bk[i].quan !=0 ):
+                print " book is available"
+                print "enter the details to issue it "
+                bk[count_stu].stu_detail()
+                bk[i].quan=bk[i].quan-1
+                count_stu=count_stu+1
+                print " book issued until:"
+                print date.retur
+            elif( issue == bk[i].name and bk[i].quan ==0 ):
+                print " sorry, all books have been issued"
+
+            else:
+                print "sorry, no books found"
+
+   elif ( a==4 ):
+       
+        print " all books on this id will be returned"
+        print " please enter you id"
+        ret_id=raw_input()
+        for i in range(count_stu):
+            if( bk[i].stu_id == ret_id ):
+                bk[i].quan=bk[i].quan+1
+                count_stu=count_stu-1
+                print " all the books have been returned"
+            else:
+                print " sorry no records found. !!! "
+
+   elif( a==5 ):
+        print " enter your id number "
+        ret_id=raw_input()
+        print "your next date of return is : "
+        print date.reissue
+
+   elif( a==6 ):
+       print " "
+       print " "
+       for i in range (count_book):
+
+           print bk[i].name
+           print bk[i].isbn
+           print bk[i].author
+           print bk[i].quan
+           print " "
+
+   elif( a==7 ):
+        break
+
+
+
+   else:
+        print " wrong entry."
+        print " please enter one of the provided option"
